@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools >= 77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "morphems-without-borders" 
+version = "2026.0.0"
+
+dependencies = []
+requires-python = ">= 3.8"
+
+[project.scripts]
+morpheme-eval = "morpheme_metrics.cli:main" 
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["morpheme_metrics*"]
