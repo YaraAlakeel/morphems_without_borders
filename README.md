@@ -14,12 +14,11 @@ We evaluate (i) tokenizer–morphology alignment against gold segmentation and (
 ## Repository structure
 
 - `morpheme_metrics/`: installable Python package
-  - `morpheme_metrics/alignment/`: intrinsic alignment metrics
-  - `morpheme_metrics/productivity/`: productivity evaluation utilities
+  - `morpheme_metrics/alignment/`: intrinsic alignment metrics (CLI: `morpheme-eval`)
+  - `morpheme_metrics/productivity/`: productivity evaluation utilities (Python library)
 - `data/`: 
   - `data/alignment/`: gold segmentation files (ATB3, BOLT).
-  - `data/productivity/`: manually curated benchmark for productivity experiments
-- `runners/`: scripts to run models and produce predictions 
+  - `data/productivity/`: manually curated benchmark for productivity experiments 
 
 
 ---
@@ -35,20 +34,27 @@ Option A : `venv` + `pip`
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install .
-
-morpheme-eval --help
 ```
 Option B : `uv`
 
 ```powershell
 uv venv
 .\.venv\Scripts\Activate.ps1
-uv pip install .
-
-morpheme-eval --help
+uv pip install . 
 ```
 
-### Intrinsic (alignment):
+> **Note**: If you encounter an error related to hardlinking during installation, use the following command instead:
+> ```powershell
+> uv pip install . --link-mode=copy
+> ```
+
+### Intrinsic (alignment) — CLI
+
+The alignment metrics are exposed via the `morpheme-eval` command-line tool:
+
+```powershell
+morpheme-eval --help
+```
 
 Run all intrinsic alignment evaluation:
 ```bash
@@ -73,15 +79,35 @@ morpheme-eval \
  * For more details about the intrinsic alignment evaluation, see [`morpheme_metrics/alignment/README.md`](morpheme_metrics/alignment/README.md).
 
 
-### Extrinsic (productivity):
+### Extrinsic (productivity) — Python Library
 
-The productivity section (`morpheme_metrics/productivity/`) contains evaluation logic (templates, normalization, scoring). Model execution code should live in `runners/`, which should:
-1) load the productivity dataset,
-2) run a model to generate outputs,
-3) write outputs to disk,
-4) call productivity scoring utilities.
+The productivity utilities are used as a Python library (no CLI). Evaluate how well LLMs generalize Arabic morphological patterns by generating words from roots and templates:
 
-See [`morpheme_metrics/productivity/README.md`](morpheme_metrics/productivity/README.md).
+```python
+from morpheme_metrics.productivity import (
+    build_prompt_with_optional_oneshot,
+    extract_prediction,
+    normalize_ar_for_compare
+)
+
+# 1. Build a prompt for the LLM
+prompt = build_prompt_with_optional_oneshot(
+    root="ك.ت.ب",
+    template="فاعل",
+    base_form="كاتب",
+    lang="ara",
+    use_oneshot=True
+)
+
+# 2. Send to your LLM and get response
+model_output = your_model.generate(prompt)
+
+# 3. Extract prediction and compare with gold
+pred = extract_prediction(model_output, gold="كاتب")
+is_correct = normalize_ar_for_compare(pred) == normalize_ar_for_compare("كاتب")
+```
+
+For full documentation and dataset format, see [`morpheme_metrics/productivity/README.md`](morpheme_metrics/productivity/README.md).
 
 ---
 

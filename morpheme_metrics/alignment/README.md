@@ -5,6 +5,7 @@ This folder contains the evaluation code for tokenizer-morphology alignment.
 ### What is in this folder
 | File | Purpose | Outputs |
 |---|---|---|
+| `cli.py` | CLI entry point | `morpheme-eval` command |
 | `token_totals.py` | Corpus totals | `total_sentences`, `total_words`, `total ground truth tokens`, `total predicted tokens` |
 | `fertility.py` | Fertility | `fertility_score` |
 | `Morphem_F1.py` | Morpheme span PRF1 | `morpheme_precision`, `morpheme_recall`, `morpheme_F1` |
