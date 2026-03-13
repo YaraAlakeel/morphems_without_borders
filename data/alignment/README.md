@@ -54,8 +54,10 @@ python data/alignment/extract_alignment_data.py \
 ### Pipeline steps
 
 1. **Parse & transliterate** — Parse ATB/BOLT integrated files, extract morpheme segments, batch-convert Buckwalter to UTF-8 via `camel_transliterate`.
-2. **Normalize لام التعريف** — Normalize `ل+ال` → `ل+ل` in segmented output.
+2. **Normalize لام التعريف** — Normalize `ل+ال` to `ل+ل` in segmented output.
 3. **Generate offsets** — Compute byte-level morpheme boundary offsets.
+
+ > Note: In the treebank, words beginning with `لل` (e.g., `للمدرسة`) are segmented as `ل+ال+مدرسة`, but the `ا` is only part of the treebank segmentation. A tokenizer processing the same word will not introduce this extra `ا`, so we normalize `ل+ال` to `ل+ل` to ensure consistency between the gold segmentation and tokenizer output.
 
 ### Outputs
 
