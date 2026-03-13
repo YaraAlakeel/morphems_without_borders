@@ -17,7 +17,8 @@ We evaluate (i) tokenizer–morphology alignment against gold segmentation and (
   - `morpheme_metrics/alignment/`: intrinsic alignment metrics (CLI: `morpheme-eval`)
   - `morpheme_metrics/productivity/`: productivity evaluation utilities (Python library)
 - `data/`: 
-  - `data/alignment/`: gold segmentation files (ATB3, BOLT) and data extraction pipeline.
+  - `data/alignment/`: gold and predicted segmentation offset files (ATB3, BOLT) and data extraction pipeline.
+    - `data/alignment/pred/`: predicted segmentation offsets from evaluated tokenizers.
   - `data/productivity/`: manually curated benchmark for productivity experiments 
 
 
