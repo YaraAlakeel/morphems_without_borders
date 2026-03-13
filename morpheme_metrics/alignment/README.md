@@ -49,6 +49,7 @@ morpheme-eval --gold GOLD.txt --pred PRED1.txt PRED2.txt --metrics all --output 
 ## Equations
 
 We quantify how closely tokenizer outputs align with Arabic morphological structure using complementary metrics:
+
 $$
 \begin{aligned}
 &\textbf{Notation.}\;\; W:\text{ set of words. For each } w\in W: \\
