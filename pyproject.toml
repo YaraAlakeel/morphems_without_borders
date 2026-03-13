@@ -9,6 +9,9 @@ version = "2026.0.0"
 dependencies = []
 requires-python = ">= 3.8"
 
+[project.optional-dependencies]
+data-extraction = ["camel-tools==1.5.5"]
+
 [project.scripts]
 morpheme-eval = "morpheme_metrics.alignment.cli:main" 
 

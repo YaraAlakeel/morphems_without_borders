@@ -17,7 +17,7 @@ We evaluate (i) tokenizer–morphology alignment against gold segmentation and (
   - `morpheme_metrics/alignment/`: intrinsic alignment metrics (CLI: `morpheme-eval`)
   - `morpheme_metrics/productivity/`: productivity evaluation utilities (Python library)
 - `data/`: 
-  - `data/alignment/`: gold segmentation files (ATB3, BOLT).
+  - `data/alignment/`: gold segmentation files (ATB3, BOLT) and data extraction pipeline.
   - `data/productivity/`: manually curated benchmark for productivity experiments 
 
 
@@ -47,6 +47,13 @@ uv pip install .
 > ```powershell
 > uv pip install . --link-mode=copy
 > ```
+
+To also install the **data extraction** dependencies (needed only if you want to re-extract alignment data from raw ATB/BOLT files):
+
+```powershell
+pip install .[data-extraction]
+```
+>  For re-extracting alignment data from raw ATB/BOLT files, see [`data/alignment/README.md`](data/alignment/README.md).
 
 ### Intrinsic (alignment) — CLI
 

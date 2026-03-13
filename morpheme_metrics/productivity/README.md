@@ -85,7 +85,7 @@ from morpheme_metrics.productivity import (
 )
 
 # Load dataset
-with open("data/productivity/productivity_dataset.json") as f:
+with open("data/productivity/productivity_dataset.json", encoding="utf-8") as f:
     data = json.load(f)
 
 # Evaluate on real roots
@@ -119,6 +119,15 @@ print(f"Accuracy: {correct/total:.2%}")
 ---
 
 ## Dataset Format
+
+Two dataset files are provided in `data/productivity/`:
+
+| File | Description |
+|------|-------------|
+| `productivity_dataset.json` | Used in our experiments |
+| `productivity_dataset_with_sentences.json` | Same data + `example_sentence` and `sentence_source` fields |
+
+> **Note:** The `_with_sentences` variant contains example sentences for each entry. These sentences were **not used in our research** but are provided for downstream use.
 
 The productivity dataset (`data/productivity/productivity_dataset.json`) contains:
 

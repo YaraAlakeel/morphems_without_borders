@@ -2,6 +2,9 @@
 
 This folder contains the evaluation code for tokenizer-morphology alignment.
 
+> **Gold data:** Pre-extracted gold segmentation files are in [`data/alignment/`](../../data/alignment/).
+> To re-extract them from raw ATB/BOLT files, see [`data/alignment/README.md`](../../data/alignment/README.md).
+
 ### What is in this folder
 | File | Purpose | Outputs |
 |---|---|---|
