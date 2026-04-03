@@ -7,7 +7,7 @@ We evaluate (i) tokenizer–morphology alignment against gold segmentation and (
 - **Intrinsic (alignment):** fertility, boundary F1, morpheme F1, and morpheme coverage rate computed from span-based gold/pred segmentations.
 - **Extrinsic (productivity):** newly curated benchmark dataset and a prompt-based productivity evaluation utilities.
 
-> Paper link: **link**
+> Paper link: **https://arxiv.org/abs/2603.15773**
 
 ---
 
