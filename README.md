@@ -124,6 +124,11 @@ For full documentation and dataset format, see [`morpheme_metrics/productivity/R
 If you use this code, please cite:
 
 ```bibtex
-% TODO: add BibTeX
+@article{alakeel2026morphemes,
+  title={Morphemes Without Borders: Evaluating Root-Pattern Morphology in Arabic Tokenizers and LLMs},
+  author={Alakeel, Yara and Qwaider, Chatrine and Aldarmaki, Hanan and Alqahtani, Sawsan},
+  journal={arXiv preprint arXiv:2603.15773},
+  year={2026}
+}
 ```
 
